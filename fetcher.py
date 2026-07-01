@@ -12,6 +12,9 @@ def fetch_item_details(item_id):
 
 if __name__ == '__main__':
     top_story_ids = fetch_top_story_ids()
-    for story_id in top_story_ids[:5]:
+    for index, story_id in enumerate(top_story_ids[:30]):
         story_details = fetch_item_details(story_id)
-        print(story_details)
+        title = story_details.get('title', 'No Title')
+        score = story_details.get('score', 0)
+        comments = story_details.get('descendants', 0)
+        print(f"{index + 1}. {title} (Score: {score}, Comments: {comments})")
